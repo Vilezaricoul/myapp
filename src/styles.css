@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+}
+.wrapper {
+	max-width: 1650px;
+	margin: auto;
+}
+header {
+	padding: 20px 0;
+}

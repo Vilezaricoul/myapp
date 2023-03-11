@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .text__main {
+    padding: 10px;
+    width: 50%;
+  }
+  
+  
+  .img__central {
+    width: 50%;
+  }
+  
+  img {
+    width: 100%;
+    /* Ширина изображений */
+    height: 100%;
+    /* Высота изображении */
+    object-fit: cover;
+    /* Вписываем фотографию в область */
+  }
+  
+  h1 {
+    font-size: 56px;
+  }
+  
+  span {
+    font-size: 30px;
+    width: 50;
+  }
+  
+  button {
+    width: 100%;
+    font-size: 30px;
+    border-radius: 20px;
+    margin-top: 40px;
+  }
