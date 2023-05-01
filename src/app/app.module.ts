@@ -22,9 +22,12 @@ import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
 import { CoursesComponent } from './pages/listofcours/cours.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/login/registery/register.component';
 
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/enviroment';
+import { HomeComponent } from './home/home.component';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,7 @@ import { RegisterComponent } from './pages/login/registery/register.component';
     CentralComponent,
     CoursesComponent,
     LoginComponent,
-    RegisterComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +53,10 @@ import { RegisterComponent } from './pages/login/registery/register.component';
     RippleModule,
     HttpClientModule,
     RatingModule,
+    AngularFireModule.initializeApp(environment.firebase)
+    
   ],
-  providers: [ProductService],
+  providers: [ProductService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,13 +8,13 @@ import { CommonModule } from '@angular/common';
 import { CentralComponent } from './pages/centlar/central.component';
 import { CoursesComponent } from './pages/listofcours/cours.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/login/registery/register.component';
+
 
 const appRoutes: Routes =[
   { path: 'courses', component: CoursesComponent},
   { path: '', component: CentralComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent}
+  // { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({

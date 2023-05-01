@@ -26,7 +26,8 @@
           <div class="header__actions actions-header">
             <div class="actions-header__item cart-header">
               <!-- <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown> -->
-              <button pButton pRipple type="button" label="ВОЙТИ" class="p-button-outlined login" routerLink="login"></button>
+              <button *ngIf="!firebaseService.isLoggedIn" pButton pRipple type="button" label="ВОЙТИ" ng class="p-button-outlined login" routerLink="login"></button>
+              <button *ngIf="firebaseService.isLoggedIn" pButton pRipple type="button" label="профиль" ng class="p-button-outlined login" routerLink="login"></button>
             </div>
           </div>
         </div>
