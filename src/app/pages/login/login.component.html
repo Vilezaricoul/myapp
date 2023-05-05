@@ -1,17 +1,20 @@
-<div id="container_demo">
+<div *ngIf="!isSingedIn; else home" id="container_demo">
     <div id="wrapper">
-        <div *ngIf="!isSingedIn">
+        <div>
             <h1>Log in</h1>
             <input type="text" #email />
             <input type="password" #password  />
             <button (click)="onSignIn(email.value, password.value)">LogIN</button>
         </div>
-        <div *ngIf="!isSingedIn">
+        <div>
             <h1>Register</h1>
             <input type="text" #emailSignUp/>
             <input type="password" #passwordSignUp  />
             <button (click)="onSignUp(emailSignUp.value, passwordSignUp.value)">reg</button>
         </div>
-        <app-home *ngIf="isSingedIn" (isLogout)="handleLogout()"></app-home>
     </div>
 </div>
+
+<ng-template #home>
+    <app-home *ngIf="isSingedIn" (isLogout)="handleLogout()"></app-home>
+</ng-template>

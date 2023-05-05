@@ -6,7 +6,7 @@ import { AppComponent } from './pages/school/app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { CentralComponent } from './pages/centlar/central.component';
-import { CoursesComponent } from './pages/listofcours/cours.component';
+import { CoursesComponent } from './pages/listofcours/courses.component';
 import { LoginComponent } from './pages/login/login.component';
 
 

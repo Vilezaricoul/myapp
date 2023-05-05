@@ -13,21 +13,29 @@ import { FormsModule } from '@angular/forms';
 import { CentralComponent } from './pages/centlar/central.component';
 import {ButtonModule} from 'primeng/button';
 import {DataViewModule} from 'primeng/dataview';
-import { ProductService } from './pages/listofcours/productservice';
 
 import {PanelModule} from 'primeng/panel';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
-import { CoursesComponent } from './pages/listofcours/cours.component';
+import { CoursesComponent } from './pages/listofcours/courses.component';
 import { LoginComponent } from './pages/login/login.component';
 
 
 import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from '../environments/enviroment';
+import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
-import { FirebaseService } from './services/firebase.service';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -53,10 +61,18 @@ import { FirebaseService } from './services/firebase.service';
     RippleModule,
     HttpClientModule,
     RatingModule,
-    AngularFireModule.initializeApp(environment.firebase)
-    
+    ToastModule,
+    CardModule,
+    TabViewModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideDatabase(() => getDatabase()),
   ],
-  providers: [ProductService, FirebaseService],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

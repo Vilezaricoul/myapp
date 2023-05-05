@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from 'src/app/model/product.model';
 
-import { Product } from './product';
-
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ProductService {
 
     status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
@@ -45,23 +46,23 @@ export class ProductService {
 
     getProductsSmall() {
         return this.http.get<any>('./assets/json/products-small.json')
-        .toPromise()
-        .then(res => <Product[]>res.data)
-        .then(data => { return data; });
+            .toPromise()
+            .then(res => <Product[]>res.data)
+            .then(data => { return data; });
     }
 
     getProducts() {
         return this.http.get<any>('./assets/json/products.json')
-        .toPromise()
-        .then(res => <Product[]>res.data)
-        .then(data => { return data; });
+            .toPromise()
+            .then(res => <Product[]>res.data)
+            .then(data => { return data; });
     }
 
     getProductsWithOrdersSmall() {
         return this.http.get<any>('./assets/json/products-orders-small.json')
-        .toPromise()
-        .then(res => <Product[]>res.data)
-        .then(data => { return data; });
+            .toPromise()
+            .then(res => <Product[]>res.data)
+            .then(data => { return data; });
     }
 
     generatePrduct(): Product {

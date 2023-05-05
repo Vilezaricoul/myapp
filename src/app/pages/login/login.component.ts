@@ -4,7 +4,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 @Component({
   selector: 'login-component',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 
 
@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
   username?: string;
   password?:string;
   isSingedIn = false
-  constructor(public firebaseservises: FirebaseService){
 
-  }
+  constructor(public firebaseservises: FirebaseService){}
+
   ngOnInit(){
     if(localStorage.getItem('user')!== null){
       this.isSingedIn = true
@@ -23,15 +23,18 @@ export class LoginComponent implements OnInit {
       this.isSingedIn = false
     }
   }
+
   onSubmit(){
     console.log(this.username+ " "+ this.password);
   }
+
   onSignUp(email: string, password: string){
     this.firebaseservises.singup(email, password)
     if(this.firebaseservises.isLoggedIn){
       this.isSingedIn = true
     }
   }
+
   onSignIn(email: string, password: string){
     this.firebaseservises.singin(email, password).then(() => {
       if(this.firebaseservises.isLoggedIn){
@@ -40,9 +43,9 @@ export class LoginComponent implements OnInit {
     })
 
   }
-  handleLogout(){
-    this.isSingedIn = false
 
+  handleLogout(){
+    this.isSingedIn = false;
   }
 
 

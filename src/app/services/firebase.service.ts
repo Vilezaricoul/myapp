@@ -1,5 +1,6 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -7,30 +8,32 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 export class FirebaseService {
 
-  isLoggedIn = false
-  @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseAuth : AngularFireAuth) {}
+  get isLoggedIn(): boolean {
+    return !!JSON.parse(localStorage.getItem('user'));
+  }
+
+  constructor(
+    public firebaseAuth: AngularFireAuth,
+    public afs: AngularFirestore,
+  ) {}
+
   async singin(email: string, password: string){
     console.log(email, password)
     await this.firebaseAuth.signInWithEmailAndPassword(email, password)
-    .then(res=>{
-      this.isLoggedIn = true
-      localStorage.setItem('user', JSON.stringify(res.user))
-    })
+      .then(res=>{
+        localStorage.setItem('user', JSON.stringify(res.user))
+      })
   }
+
   async singup(email: string, password: string){
-    console.log(email, password)
     await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
-    .then(res=>{
-      this.isLoggedIn = true
-      localStorage.setItem('user', JSON.stringify(res.user))
-    })
+      .then(res => {
+        localStorage.setItem('user', JSON.stringify(res.user))
+      })
   }
+
   logout(){
     this.firebaseAuth.signOut()
-    this.isLoggedIn = false;
     localStorage.removeItem('user')
   }
-
-
 }
