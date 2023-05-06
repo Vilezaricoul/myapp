@@ -1,0 +1,78 @@
+<div *ngIf="!isSingedIn; else home" class="auth">
+    <div class="login">
+        <h2>Войти</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+            <label *ngIf="loginForm.get('email') as ctrl" class="field">
+                <h4>Электронная почта*</h4>
+                <input type="email" pInputText formControlName="email"/>
+                <small *ngIf="ctrl.errors && !ctrl.pristine"
+                       [innerHtml]="getErrors(ctrl.errors)"
+                       class="p-error"></small>
+            </label>
+            <label *ngIf="loginForm.get('password') as ctrl" class="field">
+                <h4>Пароль*</h4>
+                <p-password formControlName="password" [toggleMask]="true" [feedback]="false"></p-password>
+                <small *ngIf="ctrl.errors && !ctrl.pristine"
+                       [innerHtml]="getErrors(ctrl.errors)"
+                       class="p-error"></small>
+            </label>
+            <p-button type="submit" label="Войти" [disabled]="loginForm.invalid"></p-button>
+        </form>
+    </div>
+    <div class="separator"></div>
+    <div class="registration">
+        <h2>Регистрация</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="signUp()">
+            <label *ngIf="registerForm.get('email') as ctrl" class="field">
+                <h4>Электронная почта*</h4>
+                <input type="email" pInputText formControlName="email"/>
+                <small *ngIf="ctrl.errors && !ctrl.pristine"
+                       [innerHtml]="getErrors(ctrl.errors)"
+                       class="p-error"></small>   
+            </label>
+            <label *ngIf="registerForm.get('name') as ctrl" class="field">
+                <h4>Имя*</h4>
+                <input type="text" pInputText formControlName="name"/>
+                <small *ngIf="ctrl.errors && !ctrl.pristine"
+                       [innerHtml]="getErrors(ctrl.errors)"
+                       class="p-error"></small>     
+            </label>
+            <label *ngIf="registerForm.get('surname') as ctrl" class="field">
+                <h4>Фамилия</h4>
+                <input type="text" pInputText formControlName="surname"/>
+                <small *ngIf="ctrl.errors && !ctrl.pristine"
+                       [innerHtml]="getErrors(ctrl.errors)"
+                       class="p-error"></small>
+            </label>
+            <div *ngIf="registerForm.get('passwords') as group" formGroupName="passwords" class="passwords">
+                <label *ngIf="group.get('password') as ctrl" class="field">
+                    <h4>Пароль*</h4>
+                    <p-password formControlName="password" 
+                                [class.ng-invalid]="ctrl.errors || (group.errors && ctrl.value && group.get('confirmPassword').value)"
+                                [class.ng-dirty]="!group.pristine"
+                                [toggleMask]="true" 
+                                [feedback]="false"></p-password>
+                    <small *ngIf="ctrl.errors && !ctrl.pristine"
+                           [innerHtml]="getErrors(ctrl.errors)"
+                           class="p-error"></small>
+                </label>
+                <label *ngIf="group.get('confirmPassword') as ctrl" class="field">
+                    <h4>Подтвердить пароль*</h4>
+                    <p-password formControlName="confirmPassword"
+                                [class.ng-invalid]="group.errors && group.get('password').value && ctrl.value"
+                                [class.ng-dirty]="!group.pristine"
+                                [toggleMask]="true"
+                                [feedback]="false"></p-password>
+                    <small *ngIf="group.errors && !group.pristine && group.get('password').value && ctrl.value"
+                           [innerHtml]="getErrors(group.errors)"
+                           class="p-error"></small>
+                </label>
+            </div>
+            <p-button type="submit" label="Регистрация" [disabled]="registerForm.invalid"></p-button>
+        </form>
+    </div>
+</div>
+
+<ng-template #home>
+    <app-home *ngIf="isSingedIn"></app-home>
+</ng-template>

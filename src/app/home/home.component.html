@@ -1,0 +1,24 @@
+<h1>ПРОФИЛЬ</h1>
+
+
+<section class="content">
+    <aside>
+        <p-button icon="pi pi-home" (click)="activeTab = 0" styleClass="p-button-text" label="Мои курсы" [class.active]="activeTab === 0"></p-button>
+        <p-button icon="pi pi-user" (click)="activeTab = 1" styleClass="p-button-text" label="Настройки" [class.active]="activeTab === 1"></p-button>
+        <p-button icon="pi pi-sign-out" styleClass="p-button-text" label="Выход" (click)="logout()"></p-button>
+    </aside>
+    <p-tabView class="main" [(activeIndex)]="activeTab">
+        <p-tabPanel>
+            <div *ngIf="myCourses; else empty" class="courses">
+                <p-card *ngFor="let course of myCourses" [header]="course.name">
+                    <p>{{course.description}}</p>
+                </p-card>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel>
+            Тут настройки
+        </p-tabPanel>
+    </p-tabView>
+</section>
+
+<ng-template #empty>Тут пока пусто</ng-template>

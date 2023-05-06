@@ -1,0 +1,41 @@
+{
+	"data": [
+		{
+			"id": "1000",
+			"code": "f230fh0g3",
+			"name": "Програмирование С",
+			"description": "НАчальный этап обучению програмированию на языке Си",
+			"image": "",
+			"price": 165,
+			"category": "Accessories",
+			"quantity": 24,
+			"inventoryStatus": "INSTOCK",
+			"rating": 5
+		},
+		{
+			"id": "1001",
+			"code": "f230fh0g3",
+			"name": "Програмирование Java",
+			"description": "НАчальный этап обучению програмированию на языке Java",
+			"image": "",
+			"price": 100,
+			"category": "Accessories",
+			"quantity": 24,
+			"inventoryStatus": "INSTOCK",
+			"rating": 5
+		},
+		{
+			"id": "1002",
+			"code": "f230fh0g3",
+			"name": "Програмирование Js",
+			"description": "НАчальный этап обучению програмированию на языке JavaScript",
+			"image": "",
+			"price": 200,
+			"category": "Accessories",
+			"quantity": 24,
+			"inventoryStatus": "INSTOCK",
+			"rating": 5
+		}
+		
+	]
+}

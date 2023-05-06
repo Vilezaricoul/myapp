@@ -1,0 +1,57 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        border-right: 1px solid #5c5656;
+    }
+
+    .content {
+        display: flex;
+        flex-basis: 100%;
+        flex-grow: 1;
+
+        ::ng-deep {
+            .p-tabview-nav-container {
+                display: none;
+            }
+        }
+
+        ::ng-deep p-tabview {
+            flex-grow: 1;
+        }
+
+        ::ng-deep .p-card {
+            width: 300px;
+            min-height: 100%;
+            margin: 0 10px;
+
+            .p-card-title {
+                color: #3B82F6;
+            }
+        }
+    }
+
+    .courses {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    ::ng-deep .p-button.p-button-text {
+        color: #9E9E9E;
+    }
+
+    ::ng-deep .active .p-button.p-button-text {
+        color: #3B82F6; 
+    }
+
+    ::ng-deep .p-button {
+        outline-color: transparent!important;
+        border: 1px solid transparent!important;
+        background-color: transparent!important;
+    }
+}
