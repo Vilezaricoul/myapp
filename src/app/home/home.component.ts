@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.userService.getUserProducts((data: UserData) => this.userData = data);
   }
 
-  logout(){
+  logout() {
     this.firebaseServise.logout();
   }
 }

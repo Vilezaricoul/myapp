@@ -11,14 +11,8 @@ export interface UserData {
   providedIn: 'root'
 })
 export class UserService {
-  _userId: string;
-
   get userId(): string {
-    if (!this._userId) {
-      this._userId = JSON.parse(localStorage.getItem('user'))?.uid;
-    }
-
-    return this._userId;
+    return JSON.parse(localStorage.getItem('user'))?.uid;
   }
 
   constructor(private db: Database, private messageService: MessageService) {}
