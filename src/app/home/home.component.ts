@@ -18,8 +18,6 @@ export class HomeComponent implements OnInit {
     return this.userData && this.products ? this.products.filter(p => this.userData.productIds.includes(p.id)) : [];
   }
 
-  @Output() isLogout = new EventEmitter<void>();
-
   constructor(
     private firebaseServise: FirebaseService,
     private userService: UserService,
@@ -32,7 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   logout(){
-    this.firebaseServise.logout()
-    this.isLogout.emit()
+    this.firebaseServise.logout();
   }
 }

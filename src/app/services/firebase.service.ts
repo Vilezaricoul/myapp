@@ -1,6 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,31 @@ export class FirebaseService {
     return !!JSON.parse(localStorage.getItem('user'));
   }
 
-  constructor(
-    public firebaseAuth: AngularFireAuth,
-    public afs: AngularFirestore,
-  ) {}
+  constructor(private firebaseAuth: AngularFireAuth, private messageService: MessageService) {}
 
-  async singin(email: string, password: string){
-    console.log(email, password)
-    await this.firebaseAuth.signInWithEmailAndPassword(email, password)
-      .then(res=>{
-        localStorage.setItem('user', JSON.stringify(res.user))
-      })
+  singin(email: string, password: string): Promise<any> {
+    return this.firebaseAuth
+      .signInWithEmailAndPassword(email, password)
+      .then(this.setUserToStorage.bind(this))
+      .catch(this.showError.bind(this));
   }
 
-  async singup(email: string, password: string){
-    await this.firebaseAuth.createUserWithEmailAndPassword(email, password)
-      .then(res => {
-        localStorage.setItem('user', JSON.stringify(res.user))
-      })
+  singup(email: string, password: string): Promise<any> {
+    return this.firebaseAuth.createUserWithEmailAndPassword(email, password)
+      .then(this.setUserToStorage.bind(this))
+      .catch(this.showError.bind(this));
   }
 
   logout(){
     this.firebaseAuth.signOut()
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
+  }
+
+  private setUserToStorage({ user }) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  private showError(err: HttpErrorResponse) {
+    this.messageService.add({ key: 'tc', severity: 'error', detail: err.message })
   }
 }

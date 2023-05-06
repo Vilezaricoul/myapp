@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DropdownModule} from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CentralComponent } from './pages/centlar/central.component';
 import {ButtonModule} from 'primeng/button';
 import {DataViewModule} from 'primeng/dataview';
@@ -36,6 +36,8 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
+import { InputMaskModule } from 'primeng/inputmask';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -53,11 +55,14 @@ import { CardModule } from 'primeng/card';
     DropdownModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ButtonModule,
     DataViewModule,
     PanelModule,
     DialogModule,
     InputTextModule,
+    InputMaskModule,
+    PasswordModule,
     RippleModule,
     HttpClientModule,
     RatingModule,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Database, set, ref, update, onValue } from '@angular/fire/database';
-import { FirebaseService } from './firebase.service';
-import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export interface UserData {
   productIds: string[];
@@ -21,10 +21,12 @@ export class UserService {
     return this._userId;
   }
 
-  constructor(private db: Database) {}
+  constructor(private db: Database, private messageService: MessageService) {}
 
   addUserProduct(productId: string) {
-    return set(ref(this.db, 'users/' + this.userId), {productIds: [productId]});
+    return set(ref(this.db, 'users/' + this.userId), {productIds: [productId]})
+      .then(this.successCallback.bind(this))
+      .catch(this.errorCallback.bind(this));
   }
 
   getUserProducts(callback: Function) {
@@ -35,7 +37,9 @@ export class UserService {
   }
 
   updateUserProducts(productIds: string[]) {
-    return update(ref(this.db, 'users/' + this.userId), {productIds});
+    return update(ref(this.db, 'users/' + this.userId), {productIds})
+      .then(this.successCallback.bind(this))
+      .catch(this.errorCallback.bind(this));;
   }
 
   deleteUserProduct(productId: string) {
@@ -43,5 +47,13 @@ export class UserService {
       data.productIds.filter(el => el !== productId);
       this.updateUserProducts(data.productIds.filter(el => el !== productId));
     });
+  }
+
+  private successCallback(): void {
+    this.messageService.add({ key: 'tc', severity: 'success', detail: 'Курс успешно добавлен!' });
+  }
+
+  private errorCallback(err: HttpErrorResponse): void {
+    this.messageService.add({ key: 'tc', severity: 'error', detail: err.message });
   }
 }
