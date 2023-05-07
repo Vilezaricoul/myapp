@@ -38,6 +38,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PasswordModule } from 'primeng/password';
+import { SettingsComponent } from './home/settings/settings.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { PasswordModule } from 'primeng/password';
     CentralComponent,
     CoursesComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

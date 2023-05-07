@@ -8,6 +8,12 @@
         flex-direction: column;
         width: 250px;
         border-right: 1px solid #5c5656;
+
+        ::ng-deep .p-button {
+            outline-color: transparent!important;
+            border: 1px solid transparent!important;
+            background-color: transparent!important;
+        }
     }
 
     .content {
@@ -47,11 +53,5 @@
 
     ::ng-deep .active .p-button.p-button-text {
         color: #3B82F6; 
-    }
-
-    ::ng-deep .p-button {
-        outline-color: transparent!important;
-        border: 1px solid transparent!important;
-        background-color: transparent!important;
     }
 }

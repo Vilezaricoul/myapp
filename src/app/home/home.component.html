@@ -7,18 +7,20 @@
         <p-button icon="pi pi-user" (click)="activeTab = 1" styleClass="p-button-text" label="Настройки" [class.active]="activeTab === 1"></p-button>
         <p-button icon="pi pi-sign-out" styleClass="p-button-text" label="Выход" (click)="logout()"></p-button>
     </aside>
-    <p-tabView class="main" [(activeIndex)]="activeTab">
+    <p-tabView *ngIf="userData; else spinner" class="main" [(activeIndex)]="activeTab">
         <p-tabPanel>
-            <div *ngIf="myCourses; else empty" class="courses">
+            <div *ngIf="myCourses.length > 0; else empty" class="courses">
                 <p-card *ngFor="let course of myCourses" [header]="course.name">
                     <p>{{course.description}}</p>
                 </p-card>
             </div>
         </p-tabPanel>
         <p-tabPanel>
-            Тут настройки
+            <app-settings *ngIf="userData" [profile]="userData?.profile"></app-settings>
         </p-tabPanel>
     </p-tabView>
 </section>
 
 <ng-template #empty>Тут пока пусто</ng-template>
+<ng-template #spinner><p-progressSpinner></p-progressSpinner></ng-template>
+
