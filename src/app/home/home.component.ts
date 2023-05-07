@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
-import { UserData, UserService } from '../services/user.service';
+import { UserService } from '../services/user.service';
 import { Product } from '../model/product.model';
 import { ProductService } from '../pages/listofcours/productservice';
+import { IUserData } from '../model/user.model';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { ProductService } from '../pages/listofcours/productservice';
 })
 export class HomeComponent implements OnInit {
   activeTab: number = 0;
-  userData: UserData;
+  userData: IUserData;
   products: Product[];
 
   get myCourses(): Product[] {
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().then(data => this.products = data);
-    this.userService.getUserProducts((data: UserData) => this.userData = data);
+    this.userService.getUserData((data: IUserData) => this.userData = data);
   }
 
   logout() {

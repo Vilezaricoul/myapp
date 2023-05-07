@@ -1,0 +1,59 @@
+:host {
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 600px;
+
+    .form-btns {
+        align-self: flex-end;
+    }
+}
+
+.field {
+    width: 100%;
+
+    h4 {
+        padding: 0;
+        margin: 0;
+        padding-bottom: 5px;
+    }
+
+    ::ng-deep {
+        p-password,
+        .p-password,
+        .p-inputtext {
+            display: block;
+            width: 100%;
+        }
+
+        p-button {
+            margin-top: 30px;
+        }
+
+        .p-inputtext {
+            color: #000;
+        }
+    }
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+
+    h3 {
+        margin: 0;
+    }
+
+    i {
+        margin-left: 10px;
+        margin-top: 2px;
+        cursor: pointer;
+    }
+}
