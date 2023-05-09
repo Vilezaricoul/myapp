@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './pages/school/app.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,7 +18,7 @@ import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
-import { CoursesComponent } from './pages/listofcours/courses.component';
+import { CoursesComponent } from './pages/list-of-courses/courses.component';
 import { LoginComponent } from './pages/login/login.component';
 
 
@@ -40,6 +39,11 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { PasswordModule } from 'primeng/password';
 import { SettingsComponent } from './home/settings/settings.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CarouselModule } from 'primeng/carousel';
+import { SchoolsComponent } from './pages/schools/schools.component';
+import { UniversitiesComponent } from './pages/universities/universities.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,9 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     LoginComponent,
     HomeComponent,
     SettingsComponent,
+    SchoolsComponent,
+    UniversitiesComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,10 +75,12 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     PasswordModule,
     RippleModule,
     HttpClientModule,
-    RatingModule,
     ToastModule,
     CardModule,
+    CarouselModule,
+    RatingModule,
     TabViewModule,
+    ProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

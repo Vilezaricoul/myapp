@@ -1,0 +1,131 @@
+<div class="banner">
+    <h2>Преобразите свой университет с Int42h</h2>
+    <div class="banner-elements">
+        <div class="image">
+            <img src="../../../assets/img/hedu/univer_img.png" alt="univer">
+        </div>
+        <div class="advantages">
+            <ul class="advantages-list">
+                <li>
+                    <img src="../../../assets/img/hedu/univer_icon1.png" alt="icon">
+                    <span>Совершенствуйте учебные программы с помощью контента мирового уровня и практического опыта</span>
+                </li>
+                <li>
+                    <img src="../../../assets/img/hedu/univer_icon1.png" alt="icon">
+                    <span>Совершенствуйте учебные программы с помощью контента мирового уровня и практического опыта</span>
+                </li>
+                <li>
+                    <img src="../../../assets/img/hedu/univer_icon1.png" alt="icon">
+                    <span>Совершенствуйте учебные программы с помощью контента мирового уровня и практического опыта</span>
+                </li>
+                <li>
+                    <img src="../../../assets/img/hedu/univer_icon1.png" alt="icon">
+                    <span>Совершенствуйте учебные программы с помощью контента мирового уровня и практического опыта</span>
+                </li>
+                <li>
+                    <img src="../../../assets/img/hedu/univer_icon1.png" alt="icon">
+                    <span>Совершенствуйте учебные программы с помощью контента мирового уровня и практического опыта</span>
+                </li>
+            </ul>
+
+            <p-button label="Начать" styleClass="p-button-rounded" (click)="start()"></p-button>
+        </div>
+    </div>
+</div>
+
+<h1>Откройте для себя лучшие курсы на Int42h</h1>
+<h2>Выбирайте из более чем 5000 курсов</h2>
+<p-carousel [value]="courses" [numVisible]="4" [numScroll]="1" [circular]="true" [showIndicators]="false">
+    <ng-template let-course pTemplate="item">
+        <div class="course" (click)="showCourseDialog(course)">
+            <h4 class="course-name">{{ course.name }}</h4>
+            <img class="course-image" [src]="course.img" alt="Course">
+            <p class="course-description">{{course.description}}</p>
+            <div class="course-raiting">
+                <p-rating [(ngModel)]="course.raiting" [readonly]="true" [cancel]="false"></p-rating> {{course.raiting}} {{course.markCount}} оценок
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<form class="form" [formGroup]="form" (ngSubmit)="save()">
+    <h2>Готовы преобразить свой университет?</h2>
+    <div class="form-fields">
+        <label *ngIf="form.get('name') as ctrl" class="field">
+            <h4>Имя*:</h4>
+            <input type="text" pInputText formControlName="name" placeholder="Имя"/>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('surname') as ctrl" class="field">
+            <h4>Фамилия*:</h4>
+            <input type="text" pInputText formControlName="surname" placeholder="Фамилия"/>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('jobPlace') as ctrl" class="field">
+            <h4>Место работы*:</h4>
+            <input type="text" pInputText formControlName="jobPlace" placeholder="Место работы"/>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('email') as ctrl" class="field">
+            <h4>Электронная почта*:</h4>
+            <input type="text" pInputText formControlName="email" placeholder="Электронная почта"/>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('phone') as ctrl" class="field">
+            <h4>Номер телефона*:</h4>
+            <p-inputMask mask="8 (999) 999-9999"
+                         formControlName="phone"
+                         placeholder="Номер телефона"></p-inputMask>
+            <small *ngIf="ctrl.errors && !ctrl.pristine" class="p-error">Некорректный номер</small>
+        </label>
+        <label *ngIf="form.get('universityName') as ctrl" class="field">
+            <h4>Название учебного заведения*:</h4>
+            <input type="text" pInputText formControlName="universityName" placeholder="Название учебного заведения"/>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('universityType') as ctrl" class="field">
+            <h4>Тип учреждения*:</h4>
+            <p-dropdown [options]="universityTypes" formControlName="universityType" placeholder="Тип учреждения"></p-dropdown>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('discipline') as ctrl" class="field">
+            <h4>Основная дисциплина*:</h4>
+            <p-dropdown [options]="disciplines" formControlName="discipline" placeholder="Основная дисциплина"></p-dropdown>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('area') as ctrl" class="field">
+            <h4>Область*:</h4>
+            <p-dropdown [options]="areas" formControlName="area" placeholder="Область"></p-dropdown>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+        <label *ngIf="form.get('other') as ctrl" class="field">
+            <h4>Расскажите нам, как мы можем помочь вам преобразовать ваш кампус:</h4>
+            <input type="text" pInputText formControlName="other"/>
+            <small *ngIf="ctrl.errors && !ctrl.pristine"
+                   [innerHtml]="getErrors(ctrl.errors)"
+                   class="p-error"></small>
+        </label>
+    </div>
+    <p-button type="submit" label="Предоставить на рассмотрение" styleClass="p-button-rounded" [disabled]="form.invalid || form.pristine"></p-button>
+</form>
+
+<p-dialog [header]="visibleCourse?.name" [(visible)]="visibleCourseDialog" [style]="{width: '500px'}" [modal]="true">
+    <img class="course-dialog-image" [src]="visibleCourse?.img" alt="Course">
+    <p class="course-dialog-description">{{visibleCourse?.description}}</p>
+</p-dialog>

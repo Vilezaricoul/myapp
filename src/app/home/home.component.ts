@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { UserService } from '../services/user.service';
 import { Product } from '../model/product.model';
-import { ProductService } from '../pages/listofcours/productservice';
+import { ProductService } from '../services/product-list.service';
 import { IUserData } from '../model/user.model';
 
 @Component({

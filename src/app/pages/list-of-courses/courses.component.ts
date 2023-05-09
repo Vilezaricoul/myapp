@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { ProductService } from './productservice';
+import { ProductService } from '../../services/product-list.service';
 import {MessageService, SelectItem} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { Product } from 'src/app/model/product.model';
