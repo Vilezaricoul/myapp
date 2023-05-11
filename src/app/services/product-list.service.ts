@@ -81,7 +81,7 @@ export class ProductService {
         return product;
     }
 
-    generateId() {
+    private generateId() {
         let text = "";
         let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         
@@ -92,23 +92,23 @@ export class ProductService {
         return text;
     }
 
-    generateName() {
+    private generateName() {
         return this.productNames[Math.floor(Math.random() * Math.floor(30))];
     }
 
-    generatePrice() {
+    private generatePrice() {
         return Math.floor(Math.random() * Math.floor(299)+1);
     }
 
-    generateQuantity() {
+    private generateQuantity() {
         return Math.floor(Math.random() * Math.floor(75)+1);
     }
 
-    generateStatus() {
+    private generateStatus() {
         return this.status[Math.floor(Math.random() * Math.floor(3))];
     }
 
-    generateRating() {
+    private generateRating() {
         return Math.floor(Math.random() * Math.floor(5)+1);
     }
 }

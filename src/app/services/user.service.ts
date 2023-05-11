@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, set, ref, update, onValue } from '@angular/fire/database';
+import { Database, set, ref, update, onValue, remove } from '@angular/fire/database';
 import { MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProfile, IUserData } from '../model/user.model';
@@ -21,8 +21,8 @@ export class UserService {
     });
   }
 
-  deleteUserData(callback: (data: IUserData) => void) {
-    return update(ref(this.db, 'users/' + this.userId), {})
+  deleteUserData() {
+    return remove(ref(this.db, 'users/' + this.userId))
       .catch(this.errorCallback.bind(this));
   }
 
@@ -57,8 +57,13 @@ export class UserService {
 
   // profile methods
   addUserProfile(profile: IProfile) {
-    return set(ref(this.db, `users/${this.userId}/profile`), profile)
-      .catch(this.errorCallback.bind(this));
+    if (!this.userId) {
+      this.errorCallback({message: 'User not found'} as HttpErrorResponse);
+      return new Promise((resolve) => resolve(0));
+    } else {
+      return set(ref(this.db, `users/${this.userId}/profile`), profile)
+        .catch(this.errorCallback.bind(this));
+    }
   }
 
   updateUserProfile(profile: IProfile) {
