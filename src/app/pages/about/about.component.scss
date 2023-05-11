@@ -1,0 +1,120 @@
+:host {
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+}
+
+.banner {
+    padding: 2rem;
+    background: #f8f9fa;
+
+    h1 {
+        font-size: 60px;
+        text-align: center;
+    }
+
+    .text-block {
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+
+        &:not(:last-child) {
+            padding-bottom: 20px;
+        }
+
+
+        &-column {
+            font-size: 24px;
+            width: calc(50% - 30px);
+        }
+    }
+
+    p {
+        font-size: 28px;
+        font-weight: 500;
+        padding: 0;
+        padding-top: 2rem;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+.title {
+    text-align: center;
+    font-size: 60px;
+}
+
+.statistic {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 20px 40px;
+    gap: 100px 40px;
+
+    &-item {
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        width: calc((100% - 200px)/3);
+        gap: 10px;
+    }
+
+    &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+    }
+    
+    &-title {
+        font-size: 24px;
+        padding-bottom: 10px;
+    }
+
+    &-number {
+        font-size: 24px;  
+    }
+}
+
+.blog-title {
+    font-size: 42px;
+    text-align: center;
+}
+
+.blogs {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+
+    img {
+        width: 100%;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+    &-content {
+        padding: 20px;
+    }
+
+    ::ng-deep p-button,
+    ::ng-deep .p-button {
+        width: 100%;
+    }
+}

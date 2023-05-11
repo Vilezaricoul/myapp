@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   activeTab: number = 0;
   userData: IUserData;
   products: Product[];
+  visible = false;
+  showedCourse;
 
   get myCourses(): Product[] {
     return this.userData && this.products ? this.products.filter(p => this.userData.productIds.includes(p.id)) : [];
@@ -32,5 +34,10 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.firebaseServise.logout();
+  }
+
+  showCourse(course) {
+    this.showedCourse = course;
+    this.visible = true;
   }
 }

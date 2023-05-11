@@ -5,36 +5,60 @@
 			"code": "f230fh0g3",
 			"name": "Програмирование С",
 			"description": "НАчальный этап обучению програмированию на языке Си",
-			"image": "",
+			"about": "Программисты на C++ создают сложные программы и сервисы. Они разрабатывают высоконагруженные сетевые приложения, игры, графические движки, компоненты для операционных систем и железа. На этом языке написаны Windows, Linux и macOS, Android, Chrome, Counter-Strike, StarCraft и Diablo. Вы освоите легендарный язык программирования с нуля: напишете поисковый движок, собственный Booking.com и получите навыки работы в команде.",
+			"image": "../../assets/img/courses_logo/1.png",
 			"price": 165,
 			"category": "Accessories",
 			"quantity": 24,
 			"inventoryStatus": "INSTOCK",
-			"rating": 5
+			"rating": 5,
+			"mentor": {
+				"image": "../../assets/img/mentor.jpg",
+				"name": "Muxiddin Nekboyev",
+				"info": "Associate global Educator, Arisona State University"
+			},
+			"duration": "40 часов",
+			"skills": ["C#", "C++", "C", "SQL", "ООП"]
 		},
 		{
 			"id": "1001",
 			"code": "f230fh0g3",
 			"name": "Програмирование Java",
 			"description": "НАчальный этап обучению програмированию на языке Java",
-			"image": "",
+			"about": "Вы с нуля освоите востребованный язык программирования, научитесь создавать качественные приложения под разные платформы и станете ценным Java-специалистом уровня middle.",
+			"image": "../../assets/img/courses_logo/2.png",
 			"price": 100,
 			"category": "Accessories",
 			"quantity": 24,
 			"inventoryStatus": "INSTOCK",
-			"rating": 5
+			"rating": 5,
+			"mentor": {
+				"image": "../../assets/img/mentor_2.jpg",
+				"name": "Петров Михаил",
+				"info": "Associate global Educator, Arisona State University"
+			},
+			"duration": "20 часов",
+			"skills": ["Java Core", "SQL", "ООП", "MySql", "Gradle"]
 		},
 		{
 			"id": "1002",
 			"code": "f230fh0g3",
 			"name": "Програмирование Js",
 			"description": "НАчальный этап обучению програмированию на языке JavaScript",
-			"image": "",
+			"about": "Благодаря frontend-разработчикам мы оставляем лайки и комментарии, добавляем товары в корзину и быстро разбираемся в онлайн-картах. На курсе вы научитесь создавать интерфейсы веб-сервисов с помощью языков программирования и дополнительных технологий. Сможете разрабатывать планировщики задач, мессенджеры, интернет-магазины.",
+			"image": "../../assets/img/courses_logo/3.png",
 			"price": 200,
 			"category": "Accessories",
 			"quantity": 24,
 			"inventoryStatus": "INSTOCK",
-			"rating": 5
+			"rating": 5,
+			"mentor": {
+				"image": "../../assets/img/mentor_Frontend.jpg",
+				"name": "Иванов Александр",
+				"info": "Associate global Educator, Arisona State University"
+			},
+			"duration": "12 часов",
+			"skills": ["HTML", "CSS", "JavaScript", "Browser API", "NodeJS"]
 		}
 		
 	]
