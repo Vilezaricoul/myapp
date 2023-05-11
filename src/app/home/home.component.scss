@@ -56,7 +56,15 @@
     }
 
     ::ng-deep p-card {
-        cursor: pointer;
+        position: relative;
+
+        i {
+            position: absolute;
+            top: 6px;
+            right: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
     }
 
     ::ng-deep .p-dialog  {

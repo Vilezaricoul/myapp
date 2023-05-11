@@ -10,7 +10,8 @@
     <p-tabView *ngIf="userData; else spinner" class="main" [(activeIndex)]="activeTab">
         <p-tabPanel>
             <div *ngIf="myCourses.length > 0; else empty" class="courses">
-                <p-card *ngFor="let course of myCourses" [header]="course.name" (click)="showCourse(course)">
+                <p-card *ngFor="let course of myCourses" [header]="course.name">
+                    <i class="pi pi-window-maximize" (click)="showCourse(course)"></i>
                     <p>{{course.description}}</p>
                 </p-card>
             </div>
