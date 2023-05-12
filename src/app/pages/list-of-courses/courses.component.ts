@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import { ProductService } from './productservice';
+import { ProductService } from '../../services/product-list.service';
 import {MessageService, SelectItem} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { Product } from 'src/app/model/product.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { UserData, UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -79,8 +79,8 @@ export class CoursesComponent {
     }
 
     private getCurrentUserProducts(): void {
-        this.userService.getUserProducts((data: UserData) => {
-            this.userProducts = data?.productIds || null;
+        this.userService.getUserProducts((productIds: string[]) => {
+            this.userProducts = productIds || null;
         });
     }
 }

@@ -7,18 +7,57 @@
         <p-button icon="pi pi-user" (click)="activeTab = 1" styleClass="p-button-text" label="Настройки" [class.active]="activeTab === 1"></p-button>
         <p-button icon="pi pi-sign-out" styleClass="p-button-text" label="Выход" (click)="logout()"></p-button>
     </aside>
-    <p-tabView class="main" [(activeIndex)]="activeTab">
+    <p-tabView *ngIf="userData; else spinner" class="main" [(activeIndex)]="activeTab">
         <p-tabPanel>
-            <div *ngIf="myCourses; else empty" class="courses">
+            <div *ngIf="myCourses.length > 0; else empty" class="courses">
                 <p-card *ngFor="let course of myCourses" [header]="course.name">
+                    <i class="pi pi-window-maximize" (click)="showCourse(course)"></i>
                     <p>{{course.description}}</p>
                 </p-card>
             </div>
         </p-tabPanel>
         <p-tabPanel>
-            Тут настройки
+            <app-settings *ngIf="userData" [profile]="userData?.profile"></app-settings>
         </p-tabPanel>
     </p-tabView>
 </section>
 
 <ng-template #empty>Тут пока пусто</ng-template>
+<ng-template #spinner><p-progressSpinner></p-progressSpinner></ng-template>
+
+<p-dialog [(visible)]="visible" [modal]="true" [draggable]="false" [resizable]="false">
+    <div class="course-main">
+        <div class="course-main-info">
+            <h2 class="course-name">{{showedCourse?.name}}</h2>
+            <p>{{showedCourse?.about || showedCourse?.description}}</p>
+        </div>
+        <img [src]="showedCourse?.image || '../../assets/img/courses_logo/robotsandme/robo.jpg'" alt="course">
+    </div>
+    <div class="course-about">
+        <h2 class="title">Описание курса</h2>
+        <div class="course-skills">
+            <h3>Чему вы научитесь</h3>
+            <ul class="course-skills-list">
+                <li *ngFor="let skill of showedCourse?.skills || ['Ардуино', 'C++', 'Робототехника', 'Конструирование', '3D моделирование', 'Электроника']">{{skill}}</li>
+            </ul>
+        </div>
+        <h3>Информация</h3>
+        <div class="course-info">
+            <div class="course-mentor">
+                <img [src]="showedCourse?.mentor?.image || '../../assets/img/mentor.jpg'" alt="mentor">
+                <div class="mentor-info">
+                    <h4>{{ showedCourse?.mentor?.name || 'Muxiddin Nekboyev' }}</h4>
+                    <p>{{ showedCourse?.mentor?.info || 'Associate global Educator, Arisona State University' }}</p>
+                </div>
+            </div>
+            <div class="course-timing">
+                <div class="course-timing-title">
+                    <i class="pi pi-clock" style="font-size: 1.5rem"></i>
+                    <b>Длительность</b>
+                </div>
+                <div class="course-timing-value">{{showedCourse?.duration || '12 часов' }}</div>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+

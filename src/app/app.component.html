@@ -11,12 +11,10 @@
             <div class="header__menu">
               <nav class="menu__body">
                 <ul class="menu__list">
-                  <li class="menu__item"><button pButton pRipple type="button" label="ШКОЛАМ" class="p-button-outlined"></button></li>
-                  <li class="menu__item"><button pButton pRipple type="button" label="ОРГАНИЗАЦИЯМ" class="p-button-outlined"></button></li>
-                  <li class="menu__item"><button pButton pRipple type="button" label="УНИВЕРСИТЕТАМ" class="p-button-outlined"></button></li>
+                  <li class="menu__item"><button pButton pRipple type="button" label="ШКОЛАМ" class="p-button-outlined" routerLink="schools"></button></li>
+                  <li class="menu__item"><button pButton pRipple type="button" label="УНИВЕРСИТЕТАМ" class="p-button-outlined" routerLink="universities"></button></li>
                   <li class="menu__item"><button pButton pRipple type="button" label="СПИСОК КУРСОВ" class="p-button-outlined" routerLink="courses"></button></li>
-                  <li class="menu__item"><button pButton pRipple type="button" label="БЛОГ" class="p-button-outlined"></button></li>
-                  <li class="menu__item"><button pButton pRipple type="button" label="О НАС" class="p-button-outlined"></button></li>
+                  <li class="menu__item"><button pButton pRipple type="button" label="О НАС" class="p-button-outlined" routerLink="about"></button></li>
                 </ul>
               </nav>
             </div>      
@@ -25,7 +23,7 @@
             <div class="actions-header__item cart-header">
               <!-- <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown> -->
               <button *ngIf="!firebaseService.isLoggedIn" pButton pRipple type="button" label="ВОЙТИ" ng class="p-button-outlined login" routerLink="login"></button>
-              <button *ngIf="firebaseService.isLoggedIn" pButton pRipple type="button" label="профиль" ng class="p-button-outlined login" routerLink="login"></button>
+              <button *ngIf="firebaseService.isLoggedIn" pButton pRipple type="button" label="ПРОФИЛЬ" ng class="p-button-outlined login" routerLink="login"></button>
             </div>
           </div>
         </div>

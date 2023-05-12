@@ -1,0 +1,30 @@
+<div class="title">
+    <h3>Настройки</h3>
+    <i *ngIf="readonly" class="pi pi-pencil" (click)="readonly = false"></i>
+</div>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <label *ngIf="form.get('name') as ctrl" class="field">
+        <h4>Имя</h4>
+        <input type="text" pInputText formControlName="name"/>
+        <small *ngIf="ctrl.errors && !ctrl.pristine && !readonly" class="p-error">Поле обязательно для заполнения</small>     
+    </label>
+    <label *ngIf="form.get('surname') as ctrl" class="field">
+        <h4>Фамилия</h4>
+        <input type="text" pInputText formControlName="surname"/>
+    </label>
+    <label *ngIf="form.get('phone') as ctrl" class="field">
+        <h4>Номер телефона</h4>
+        <p-inputMask mask="8 (999) 999-9999"
+                     formControlName="phone"
+                     [placeholder]="readonly ? '' : '8 (999) 999-9999'"></p-inputMask>
+        <small *ngIf="ctrl.errors && !ctrl.pristine && !readonly" class="p-error">Некорректный номер</small>
+    </label>
+    <div *ngIf="!readonly" class="form-btns">
+        <p-button label="Отмена"
+                  styleClass="p-button-secondary p-button-text"
+                  (click)="cancel(); readonly = true;"></p-button>
+        <p-button type="submit"
+                  label="Сохранить изменения" 
+                  [disabled]="form.invalid || form.pristine"></p-button>
+    </div>
+</form>

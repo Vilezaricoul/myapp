@@ -1,0 +1,115 @@
+<div class="banner">
+    <h1>Непревзойденные функции,<br> которые мы создали</h1>
+    <div class="banner-text">
+        <div class="text-block">
+            <div class="text-block-column">
+                    Мы — команда молодых инженеров и преподавателей. Мы
+                обучались в ВУЗах разных стран и везде видели одни и те же 
+                недостатки — отсутствие индивидуального подхода и большие
+                пробелы в знаниях у многих выпускников.
+            </div>
+            <div class="text-block-column">
+                    Вернувшись в Узбекистан, мы начали преподавать
+                робототехнику и программирование. Мы стремились к тому,
+                чтобы не только давать знания, но и мотивировать каждого
+                ученика к самостоятельному обучению. При сопоставлении
+                образовательного плана, мы учитывали индивидуальные
+                особенности учащихся, их интересы и возможности.
+            </div>
+        </div>
+        <div class="text-block">
+            <div class="text-block-column">
+                    Когда учеников стало очень много, мы задумались о
+                необходимости создания платформы дистанционного
+                обучения, чтобы каждый житель Узбекистана имел доступ к
+                современному качественному образованию, Эта платформа
+                должна была сохранить наш подход к учебному процессу — и
+                благодаря нейронным сетям это стало возможно.
+            </div>
+            <div class="text-block-column">
+                    Мы собрали все самые лучшие и эффективные наработки В
+                педагогике и создали INT42H на основе искусственного
+                интеллекта и блокчейна. Платформа постоянно развивается и
+                адаптируется индивидуально пед каждого ученика, чтобы
+                процесс обучения был максимально эффективным и нескучным.
+            </div>
+        </div>
+    </div>
+    <p>Оцените INT42H сами — выберите свой первый курс!</p>
+</div>
+
+<h2 class="title">Статистика</h2>
+
+<ul class="statistic">
+    <li class="statistic-item">
+        <div class="statistic-icon">
+            <i class="pi pi-user" style="font-size: 2rem"></i>
+        </div>
+        <div class="statistic-content">
+            <div class="statistic-title">Количество слушателей</div>
+            <b class="statistic-number">400</b>
+        </div>
+    </li>
+    <li class="statistic-item">
+        <div class="statistic-icon">
+            <i class="pi pi-book" style="font-size: 2rem"></i>
+        </div>
+        <div class="statistic-content">
+            <div class="statistic-title">Количество курсов</div>
+            <b class="statistic-number">5</b>
+        </div>
+    </li>
+    <li class="statistic-item">
+        <div class="statistic-icon">
+            <i class="pi pi-sun" style="font-size: 2rem"></i>
+        </div>
+        <div class="statistic-content">
+            <div class="statistic-title">Количество выданных сертификатов</div>
+            <b class="statistic-number">10</b>
+        </div>
+    </li>
+    <li class="statistic-item">
+        <div class="statistic-icon">
+            <i class="pi pi-building" style="font-size: 2rem"></i>
+        </div>
+        <div class="statistic-content">
+            <div class="statistic-title">Количество организаций</div>
+            <b class="statistic-number">5</b>
+        </div>
+    </li>
+    <li class="statistic-item">
+        <div class="statistic-icon">
+            <i class="pi pi-home" style="font-size: 2rem"></i>
+        </div>
+        <div class="statistic-content">
+            <div class="statistic-title">Количество школ</div>
+            <b class="statistic-number">2</b>
+        </div>
+    </li>
+    <li class="statistic-item">
+        <div class="statistic-icon">
+            <i class="pi pi-users" style="font-size: 2rem"></i>
+        </div>
+        <div class="statistic-content">
+            <div class="statistic-title">Количество партнеров</div>
+            <b class="statistic-number">7</b>
+        </div>
+    </li>
+</ul>
+
+<h2 class="blog-title">Наш блог</h2>
+
+<ul class="blogs">
+    <li *ngFor="let blog of blogList" class="blog">
+        <img [src]="blog.img" alt="blog">
+        <div class="blog-content">
+            <p class="info">{{blog.intro}}</p>
+            <p-button styleClass="p-button p-button-rounded" label="Посмотреть больше" (click)="showBlogInfo(blog)"></p-button>
+        </div>
+    </li>
+</ul>
+
+<p-dialog [(visible)]="visible" [style]="{width: '50vw'}" [modal]="true" [draggable]="false" [resizable]="false">
+    <img [style.width]="'100%'" [src]="showedBlog?.img" alt="blog">
+    <p>{{showedBlog?.text}}</p>
+</p-dialog>
