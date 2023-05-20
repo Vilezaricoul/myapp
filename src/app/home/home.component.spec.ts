@@ -17,6 +17,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DialogModule } from 'primeng/dialog';
+import { PanelModule } from 'primeng/panel';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -33,6 +35,8 @@ describe('HomeComponent', () => {
         HttpClientTestingModule,
         TabViewModule,
         ButtonModule,
+        DialogModule,
+        PanelModule,
         ProgressSpinnerModule,
       ],
       providers: [
